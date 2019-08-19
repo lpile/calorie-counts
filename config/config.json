@@ -16,11 +16,8 @@
     "operatorsAliases": false
   },
   "production": {
-    "use_env_variable": "DATABASE_URL"
-    "username": "loganpile",
-    "password": null,
-    "database": "calorie_counts_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
+    "use_env_variable": "DATABASE_URL",
+    "host": "calorie-counts.herokuapp.com",
+    "dialect": "postgres"
   }
 }
