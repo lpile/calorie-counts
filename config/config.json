@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "loganpile",
+    "password": null,
+    "database": "calorie_counts_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "loganpile",
+    "password": null,
+    "database": "calorie_counts_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "loganpile",
+    "password": null,
+    "database": "calorie_counts_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
