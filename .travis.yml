@@ -3,24 +3,16 @@ node_js:
 - node
 services:
 - postgresql
-before_script:
-- psql -c 'CREATE DATABASE travis_test;' -U postgres
 notifications:
   email: false
-branches:
-  only:
-  - master
 cache:
   directories:
   - node_modules
-install:
-- npm install
 script:
-- npm test
+- npm run test
 deploy:
   provider: heroku
   api_key:
     secure: by9mU3XeRaHpHN3C1BoLbsyGtr3ufUofVzjlM564JvezITmDPmzMoBW/qndtrhyVEdf1ZR4dTHSYw5ifx1qgl5eNHNNv2KFl1waziTC9s1E1FEkxdcn5mJKWeOeQ3EpkNaNgTBpXZViwM+FqJ3GJh8OApfAM1f5GFHh4TG9a/Uz8qkWfqrnIZXW5m9Rae0gFOceq8IsjZ0rMfUWvvTVE0tUonmAO6GKvYIbGMPIF3YTa2I2Yyq4NBJgfFXeYPAVghoqkUQtHR24NvxG9tgNfebXepsVRWTdAK02TRUzZ/Y/Il3Nwi0QOziVg8NwYyGM0zp2IL5HqYzs8kSOMH2DGDQgLt7m+XgZMQ0Zo+aolfBNDFMZ2Ix++iXbYtB7bdszdYQaF2sSZ6+U36FZ90yqPxU9ObRT3IhUq89f5Eirciz2fZp2hmhZA0saFzENp9sE5pcKxFkYq9u1qOQu1yXaJKnoiwgcqU/An//ZOKAGVzvf/Vzub8dBvf48ZVGIibwXqRG8b1h002dpiSGXNYzsUIJg+NSZELsxLjHKp/eqalxofeP4quMkbCsH7z+3d6m6AVVPpXASs7iiea1GeS572+xFidAww8dwNXFhghAdhOy38z//Gxst0YpYI1JrP1GljGYLa3ugrW1nqC56TzOzBjidUEVEx5Pq5fvtgGYglbY4=
   app: calories-counts
-  skip_cleanup: true
 
