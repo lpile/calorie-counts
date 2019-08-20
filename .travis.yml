@@ -16,7 +16,7 @@ cache:
 install:
 - npm install
 script:
-- npm test
+- run npm test
 deploy:
   provider: heroku
   api_key:
