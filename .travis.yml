@@ -7,6 +7,18 @@ before_script:
 - psql -c 'CREATE DATABASE travis_test;' -U postgres
 notifications:
   email: false
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm update
+install:
+- npm install
+script:
+- npm test
 deploy:
   provider: heroku
   api_key:
