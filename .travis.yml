@@ -14,4 +14,3 @@ deploy:
   app: calories-counts
   skip_cleanup: true
 
-//dotenv
