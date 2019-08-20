@@ -1,10 +1,15 @@
 language: node_js
 node_js:
-  - 12.5.0
+- 12.5.0
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'CREATE DATABASE travis_test;' -U postgres
+- psql -c 'CREATE DATABASE travis_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: aUx6ZVwwvEqPKk88eTW05SsgrzC0sDZVfOi4i3+zXSawo8FVU7rSlboXfPVGdchQk1Gx1VkfO2YgtapWjsqPBU2Hsuz+5Dq1fiXgcsPkNX9LShBRN1c0JANMtBGSnyt2E5YHlEvuCM0dxzUoUEh5sBJq1JlyIKJZJWu3SvOUcdXOmmmFDw8Z/GBJ3l3SqFjf3JIyyELy+/QJytKnB4SG+IyMjCMegZ+vteJKIWXP/PkM8S8RRVtMML0TYx2NlQeyDKMvuLmDC7ZRQXcCLRN7pLBweO2YiuYY97pP6Nn8iRh8867Yoii7dkACaooEmHSGSzSl5q5N+z56hcAVOQy3njR8OeeyaocU44a5jl5cdt5Hj/ecKAXy378E4qIQK7llqxmFGAXM+LpgZcX6t16L5o3meDyCel7JICzEjm5qitwOcJw2YL981iDQkE2bXgD04YdHedYjoX47IoInj8FfOZvwpO6lq1keCW3mOPMa/qQUi+XQ5HgfNbV1hqp8mF09jb6/ePIdUrZ8SC89bpJFrBLt4/NYTsiMP+eblRL4vShsy9HC1ghFZ27maQxdrtNwm15dcK1l1UdbiHI1XahxFTiqEoKmJpdyQ8YBDPUe/ivvqYV/SXLAeWsVDPpFKdd6Tera/AkEjZSz2a9IfHbtgU9TUeUqykUyeN9bA5OTPtk=
+  app: calorie-counts
