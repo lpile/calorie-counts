@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- node
+services:
+- postgresql
+script:
+- npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: BYWwU+ZyX9OFE0CVk29xDIVNSvVnz+Lv7/Cn64CfCRphKGSEIuBlkVwe1I2iHp9+RtpgFgz7NRkpTsKQ4Ok/mssxC7RyQr6v99o95YLol4KXbV185Ng28VanoDXxs0rUFrbPT2HlGG6y8AbLS8vePAY1tqOgLhl3taOjTUG6NOVxgKugG75STsavk1H4aNCEzhxEus89mXw5uhMM064qD+h/vQNsrrg6iJIWzM5tZbl6vBdbc/3wAFs+FDHZVD1zrpsMHElJVXcawBdI4tJK47b8QznY/fB5w8HTwLA/CFP8WtsYNCCW6pTgn5ipf1BemBYHCIyCW7ONihWKxrbyXv6+Q32xK/3U6z2tmVdxuIsq0qtFRMB6PSCh1700hoeKLTR4Fu4D5OTHMEKg+fnIxkbb7Da5xA4gljgY1iLy4SvZ4sXXwFTdSG+0sGldiBrq9F1GyhubZBSL1oznrrT1OR9KQhgGQjYcuDgJASCy/HIzEPjxKXXGdSdYmI+j37qJ2Rx9cV4qYPGuS0N78PnIzqadHzsV+dtAH6eV5kBcGywQQprCWUTEKrMHyWfVNExCCfKsHFswcNbr1hpinPOv1oMSbCuE/bic5ZNk67NtnDQf814zieX4IkQzm+x/8ab4YrlZxzxEd2fCdAbZ/kWRp9N+pFFgXAebMSt8PUPgdi4=
+  app: calorie-counts
