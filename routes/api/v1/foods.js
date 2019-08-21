@@ -20,20 +20,6 @@ router.get('/', function (req, res) {
     });
 });
 
-/* DELETE single food */
-router.delete('/:id', function(req, res) {
-  Food.findOne({ where: { id: req.params.id }})
-  .then(food => {
-    food.destroy();
-    res.setHeader('Content-Type', 'application/json');
-    res.status(204).send()
-  })
-  .catch(error => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(404).send({ error: "Not Found" });
-  });
-});
-
 /* GET single food */
 router.get('/:id', function (req, res) {
   Food.findOne({ where: { id: req.params.id }})
@@ -59,16 +45,16 @@ router.put('/:id', function (req, res) {
     if (!food) {
       res.setHeader('Content-Type', 'application/json');
       res.status(404).send(JSON.stringify({ error: 'Food Not Found' }));
+    }  else if (!req.body.name && req.body.calories) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(400).send(JSON.stringify({ error: 'Need Food Name' }));
+    } else if (!req.body.calories && req.body.name) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(400).send(JSON.stringify({ error: 'Need Food Calories' }));
     } else if (!req.body.name && !req.body.calories) {
       res.setHeader('Content-Type', 'application/json');
       res.status(400).send(JSON.stringify({ error: 'Need Food Name And Calories' }));
-    } else if (!req.body.name) {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(400).send(JSON.stringify({ error: 'Need Food Name' }));
-    } else if (!req.body.calories) {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(400).send(JSON.stringify({ error: 'Need Food Calories' }));
-    } else {
+    }else {
       Food.update(
         {
           name: req.body.name,
