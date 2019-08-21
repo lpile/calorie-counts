@@ -24,7 +24,7 @@ router.delete('/:id', function(req, res, next) {
   })
 	.then(food => {
      if (food !== 1)
-			{throw new Error("Not Found")}
+	{throw new Error("Not Found")}
 	})
   .then(food => {
     res.setHeader('Content-Type', 'application/json');
