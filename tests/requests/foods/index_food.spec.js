@@ -1,7 +1,7 @@
 var shell = require('shelljs');
 var request = require('supertest');
-var app = require('../../app');
-var Food = require('../../models').Food;
+var app = require('../../../app');
+var Food = require('../../../models').Food;
 
 describe('GET /api/v1/foods path', () => {
   beforeAll(() => {
