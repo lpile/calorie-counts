@@ -20,6 +20,20 @@ router.get('/', function (req, res) {
     });
 });
 
+/* DELETE single food */
+router.delete('/:id', function(req, res) {
+  Food.findOne({ where: { id: req.params.id }})
+  .then(food => {
+    food.destroy();
+    res.setHeader('Content-Type', 'application/json');
+    res.status(204).send()
+  })
+  .catch(error => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(404).send({ error: "Not Found" });
+  });
+});
+
 /* GET single food */
 router.get('/:id', function (req, res) {
   Food.findOne({ where: { id: req.params.id }})
