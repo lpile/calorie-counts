@@ -16,24 +16,17 @@ router.get("/", function (req, res) {
     });
 });
 
-router.delete('/:id', function(req, res, next) {
-  Food.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-	.then(food => {
-     if (food !== 1)
-			{throw new Error("Not Found")}
-	})
+router.delete('/:id', function(req, res) {
+  Food.findOne({ where: { id: req.params.id }})
   .then(food => {
+    food.destroy();
     res.setHeader('Content-Type', 'application/json');
-    res.status(204).send(JSON.stringify(food));
+    res.status(204).send()
   })
   .catch(error => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(404).send({ error: "Not Found"});
-  })
+    res.status(404).send({ error: "Not Found" });
+  });
 });
 
 module.exports = router;
