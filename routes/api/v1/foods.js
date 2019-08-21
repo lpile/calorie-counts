@@ -6,7 +6,7 @@ var Food = require('../../../models').Food;
 router.get('/', function (req, res) {
   Food.findAll()
     .then(foods => {
-      if (!array.length) {
+      if (!foods.length) {
         res.setHeader('Content-Type', 'application/json');
         res.status(404).send(JSON.stringify({ error: 'Database Is Empty' }));
       } else {
