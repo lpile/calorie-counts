@@ -2,7 +2,7 @@ var shell = require('shelljs');
 var request = require('supertest');
 var app = require('../../../app');
 
-describe('GET /api/v1/foods/:id path', () => {
+describe('PUT /api/v1/foods/:id path', () => {
   beforeAll(() => {
     shell.exec('npx sequelize db:create')
   });
