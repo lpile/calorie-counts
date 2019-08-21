@@ -39,4 +39,28 @@ router.get('/:id', function (req, res) {
   });
 });
 
+/* Update a single food resource */
+router.put('/:id', function (req, res) {
+  Food.update(
+    {
+      name: req.body.name,
+      calories: req.body.calories
+    },
+    {
+      returning: true,
+      where: {
+        id: parseInt(req.params.id)
+      }
+    }
+  )
+  .then(([rowsUpdate, [updatedFood]]) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(202).send(JSON.stringify(updatedFood));
+  })
+  .catch(error => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(500).send({ error })
+  });
+});
+
 module.exports = router;
