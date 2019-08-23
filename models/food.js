@@ -6,8 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Food.associate = function(models) {
 		Food.belongsToMany(models.Meal, 
-			{through: models.FoodMeals,
+			{ through: 'FoodMeals',
+				as: 'meals',
        	foreignKey: 'FoodId',
+				otherKey: 'MealId',
        	onDelete: 'CASCADE'
      });
   };
