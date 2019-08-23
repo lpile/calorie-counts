@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      mealId: {
+      MealId: {
         type: Sequelize.BIGINT,
 				references: {
         	model: 'Meals',
@@ -17,7 +17,7 @@ module.exports = {
 				onUpdate: "CASCADE",
         onDelete: "SET NULL"				
       },
-      foodId: {
+      FoodId: {
         type: Sequelize.BIGINT, 
 				references: {
         	model: 'Food',
