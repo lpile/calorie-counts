@@ -2,80 +2,52 @@ var shell = require('shelljs');
 var request = require('supertest');
 var app = require('../../../app');
 
-describe('PUT /api/v1/foods/:id path', () => {
+describe('PATCH /api/v1/foods/:id path', () => {
   beforeAll(() => {
     shell.exec('npx sequelize db:create')
   });
+
   beforeEach(() => {
-      shell.exec('npx sequelize db:migrate')
-      shell.exec('npx sequelize db:seed:all')
-    });
-  afterEach(() => {
     shell.exec('npx sequelize db:migrate:undo:all')
+    shell.exec('npx sequelize db:migrate')
+    shell.exec('npx sequelize db:seed:all')
+  })
+
+  test('should return a 202 status', async() => {
+    const food = { 'food': { 'name': 'Mint', 'calories': '14'} };
+    const response = await request(app).patch('/api/v1/foods/1').send(food);
+    expect(response.statusCode).toBe(202);
   });
 
-  test('should return a 202 status', () => {
-    return request(app).put('/api/v1/foods/1').send(
-		{
-			food:
-      	{ 
-					name: 'Banana',
-      		calories: 140
-				}
-		})
-    .then(response => {
-      expect(response.status).toBe(202)
-    });
+  test('should update a single food', async() => {
+    const food = { 'food': { 'name':'Banana', 'calories':'140'} };
+    const response = await request(app).patch('/api/v1/foods/1').send(food);
+    expect(response.body.id).toEqual(1);
+    expect(response.body.name).toEqual('Banana');
+    expect(response.body.calories).toEqual(140);
   });
 
-  test('should return a 400 status if no information is in request', () => {
-    return request(app).put('/api/v1/foods/1').send().then(response => {
-      expect(response.status).toBe(400)
-      expect(response.body.error).toBe('Need Food Name And Calories')
-    });
+  test('should return a 404 status if food id is not in database', async() => {
+    const food = { 'food': { 'name': 'Mint', 'calories': '14'} };
+    const response = await request(app).patch('/api/v1/foods/100').send(food);
+    expect(response.statusCode).toBe(404);
+  });
+  
+  test('should return a 404 status if food parameters are not include in request', async() => {
+    const food = 'food';
+    const response = await request(app).patch('/api/v1/foods/1').send(food);
+    expect(response.status).toBe(404);
   });
 
-//  test('should return a 400 status if food name is not in request', () => {
-//    return request(app).put('/api/v1/foods/1').send({
-//			food: {
-//      	calories: 140
-//			}
-//    })
-//    .then(response => {
-//      expect(response.status).toBe(400)
-//      expect(response.body.error).toBe('Need Food Name And Calories')
-//    });
-//  });
+  test('should return a 404 status if food calories parameter are not include in request', async() => {
+    const food = { 'food': { 'name': 'Banana' } };
+    const response = await request(app).patch('/api/v1/foods/1').send(food);
+    expect(response.status).toBe(404);
+  });
 
-//  test('should return a 400 status if food calories is not in request', () => {
-//    return request(app).put('/api/v1/foods/1').send({
-//      name: 'Banana'
-//    })
-//    .then(response => {
-//      expect(response.status).toBe(400)
-//      expect(response.body.error).toBe('Need Food Calories')
-//    });
-//  });
-//
-//  test('should return a 404 status if food id is not in database', () => {
-//    return request(app).put('/api/v1/foods/100').send({
-//      name: 'Mint',
-//      calories: 100
-//    })
-//    .then(response => {
-//      expect(response.status).toBe(404)
-//    });
-//  });
-//
-//  test('should update a single food', () => {
-//    return request(app).put('/api/v1/foods/1').send({
-//      name: 'Banana',
-//      calories: 140
-//    })
-//    .then(response => {
-//      expect(Object.values(response.body)).toContain(1)
-//      expect(Object.values(response.body)).toContain('Banana')
-//      expect(Object.values(response.body)).toContain(140)
-//    })
-//  });
+  test('should return a 404 status if food name parameter are not include in request', async() => {
+    const food = { 'food': { 'calories': '140' } };
+    const response = await request(app).patch('/api/v1/foods/1').send(food);
+    expect(response.status).toBe(404);
+  });
 });
