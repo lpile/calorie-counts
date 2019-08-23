@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": null,
+    "database": "calorie_counts_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "calorie_counts_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "host": "calorie-counts.herokuapp.com",
+    "dialect": "postgres"
+  }
+}
