@@ -30,17 +30,20 @@ describe('POST /api/v1/foods path', () => {
     const food = 'food';
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
   test('should return a 404 status if food calories parameter are not include in request', async() => {
     const food = { 'food': { 'name': 'Mint' } };
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
   test('should return a 404 status if food name parameter are not include in request', async() => {
     const food = { 'food': { 'calories': '14' } };
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 });

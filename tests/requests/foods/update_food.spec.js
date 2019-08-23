@@ -32,22 +32,25 @@ describe('PATCH /api/v1/foods/:id path', () => {
     const response = await request(app).patch('/api/v1/foods/100').send(food);
     expect(response.statusCode).toBe(404);
   });
-  
+
   test('should return a 404 status if food parameters are not include in request', async() => {
     const food = 'food';
     const response = await request(app).patch('/api/v1/foods/1').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
   test('should return a 404 status if food calories parameter are not include in request', async() => {
     const food = { 'food': { 'name': 'Banana' } };
     const response = await request(app).patch('/api/v1/foods/1').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
   test('should return a 404 status if food name parameter are not include in request', async() => {
     const food = { 'food': { 'calories': '140' } };
     const response = await request(app).patch('/api/v1/foods/1').send(food);
     expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 });
