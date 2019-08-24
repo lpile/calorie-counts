@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
       res.status(404).send({ error: 'Database Is Empty' });
     } else {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).send(JSON.stringify(foods));
+      res.status(200).send(JSON.stringify(foods, ['id', 'name', 'calories']));
     }
   })
   .catch(error => {
@@ -29,15 +29,15 @@ router.post('/', function(req, res) {
     })
     .then(food => {
       res.setHeader('Content-Type', 'application/json');
-      res.status(201).send(JSON.stringify(food));
+      res.status(201).send(JSON.stringify(food, ['id', 'name', 'calories']));
     })
     .catch(error => {
       res.setHeader('Content-Type', 'application/json');
-      res.status(500).send({ error })
+      res.status(500).send({ error: 'This Food Already Exists' })
     });
   } else {
     res.setHeader('Content-Type', 'application/json');
-    res.status(404).send({ error: 'Food Needs Name/Calories' })
+    res.status(400).send({ error: 'Food Needs Name/Calories' })
   }
 });
 
@@ -66,7 +66,7 @@ router.get('/:id', function (req, res) {
   .then(food => {
     if (food) {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).send(JSON.stringify(food));
+      res.status(200).send(JSON.stringify(food, ['id', 'name', 'calories']));
     } else {
       res.setHeader('Content-Type', 'application/json');
       res.status(404).send({ error: 'Food Not Found' });
@@ -98,7 +98,7 @@ router.patch('/:id', function (req, res) {
           })
           .then(([rowsUpdate, [updatedFood]]) => {
             res.setHeader('Content-Type', 'application/json');
-            res.status(202).send(JSON.stringify(updatedFood));
+            res.status(202).send(JSON.stringify(updatedFood, ['id', 'name', 'calories']));
           })
           .catch(error => {
             res.setHeader('Content-Type', 'application/json');
@@ -113,7 +113,7 @@ router.patch('/:id', function (req, res) {
     });
   } else {
     res.setHeader('Content-Type', 'application/json');
-    res.status(404).send({ error: 'Food Needs Name/Calories' })
+    res.status(400).send({ error: 'Food Needs Name/Calories' })
   }
 });
 

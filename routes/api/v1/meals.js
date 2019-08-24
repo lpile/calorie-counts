@@ -14,7 +14,7 @@ router.get("/", function(req, res, next) {
 	})
 	.then(meals => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).send(JSON.stringify(meals));
+    res.status(200).send(JSON.stringify(meals, ['id', 'name', 'foods']));
 	})
 	.catch(error => {
     res.setHeader('Content-Type', 'application/json');
@@ -36,7 +36,7 @@ router.get('/:meal_id/foods', function (req, res) {
   .then(meal => {
     if (meal) {
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).send(JSON.stringify(meal));
+      res.status(200).send(JSON.stringify(meal, ['id', 'name', 'foods']));
     } else {
       res.setHeader('Content-Type', 'application/json');
       res.status(404).send({ error: 'Meal Not Found' });
