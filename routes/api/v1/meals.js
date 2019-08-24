@@ -47,4 +47,35 @@ router.get('/:meal_id/foods', function (req, res) {
   });
 });
 
+/* DELETE food from meal */
+router.delete('/:meal_id/foods/:id', function(req, res) {
+  Meal.findOne({ where: { id: req.params.meal_id }})
+	.then(meal => {
+    if (meal) {
+			Food.findOne({ where: { id: req.params.id }})
+		  .then(food => {
+		    if (food) {
+					meal.removeFoods(food);
+		      res.setHeader('Content-Type', 'application/json');
+		      res.status(204).send();
+		    } else {
+		      res.setHeader('Content-Type', 'application/json');
+		      res.status(404).send({ error: 'Food Not Found' });
+		    }
+		  })
+		  .catch(error => {
+		    res.setHeader('Content-Type', 'application/json');
+		    res.status(500).send({ error })
+		  });
+    } else {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(404).send({ error: 'Meal Not Found' });
+    }
+  })
+  .catch(error => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(500).send({ error })
+  });
+});
+
 module.exports = router;
