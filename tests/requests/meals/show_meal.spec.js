@@ -28,9 +28,10 @@ describe('GET /api/v1/meals/:meal_id/foods path', () => {
     expect(response.body.foods[2].name).toBe('Apple');
   });
 
-  test('should return a 404 status if meal is not in database', async () => {
+  test('should return a 404 status if meal is not in database', async (done) => {
     const response = await request(app).get('/api/v1/meals/100/foods');
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toBe('Meal Not Found');
+    done();
   });
 });
