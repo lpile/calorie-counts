@@ -21,14 +21,14 @@ describe('/api/v1/meals path', () => {
     });
   });
 
-  //test('should return an array of meal objects', () => {
-  //  return request(app).get("/api/v1/meals").then(response => {
-  //    expect(response.body.length).toEqual(4),
-  //    expect(Object.keys(response.body[0])).toContain('title')
-  //    expect(Object.keys(response.body[0])).toContain('price'),
-  //    expect(Object.keys(response.body[0])).toContain('releaseYear'),
-  //    expect(Object.keys(response.body[0])).toContain('active')
-  //  })
-  //});
+  test('should return an array of meal objects', () => {
+    return request(app).get("/api/v1/meals").then(response => {
+      //expect(response.body.length).toEqual(4),
+			expect(Object.keys(response.body[0])).toContain('id')
+			expect(Object.keys(response.body[0])).toContain('name')
+			expect(Object.keys(response.body[0].foods[0])).toContain('id')
+			expect(Object.keys(response.body[0].foods[0])).toContain('name')
+    })
+  });
 });
 
