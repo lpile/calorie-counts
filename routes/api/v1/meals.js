@@ -105,7 +105,7 @@ router.post("/:meal_id/foods/:id", async function(req, res, next) {
 	}
 	else if (foodmeal !== null) {
     res.setHeader('Content-Type', 'application/json');
-    res.status(406).send({ error: 'The food already belongs to this meal' })
+    res.status(406).send({ error: 'Food already belongs to this meal' })
 	}
 	else if (!food || !meal) {
     res.setHeader('Content-Type', 'application/json');
