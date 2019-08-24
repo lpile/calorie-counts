@@ -20,11 +20,12 @@ describe('GET /api/v1/meals/:meal_id/foods path', () => {
 
   test('should return a single meal with associated foods', async () => {
     const response = await request(app).get('/api/v1/meals/1/foods');
-    expect(response.body.id).toEqual(1);
-    expect(response.body.name).toEqual('Breakfast');
-    expect(response.body.foods.length).toEqual(3);
-    expect(response.body.foods[0].name).toEqual('Banana');
-    expect(response.body.foods[2].name).toEqual('Apple');
+    expect(response.body.id).toBe(1);
+    expect(response.body.name).toBe('Breakfast');
+    expect(response.body.foods.length).toBe(3);
+    expect(response.body.foods[0].name).toBe('Banana');
+    expect(response.body.foods[1].name).toBe('Yogurt');
+    expect(response.body.foods[2].name).toBe('Apple');
   });
 
   test('should return a 404 status if meal is not in database', async () => {

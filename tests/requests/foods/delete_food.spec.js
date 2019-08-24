@@ -14,12 +14,12 @@ describe('DELETE /api/v1/foods/:id path', () => {
     shell.exec('npx sequelize db:seed:all')
   })
 
-	test('should return a 204 status', async() => {
+	test('should return a 204 status', async () => {
     const response = await request(app).delete('/api/v1/foods/1');
     expect(response.statusCode).toBe(204);
   });
 
-	test('should delete a food', async() => {
+	test('should delete a food', async () => {
     const response = await request(app).delete('/api/v1/foods/1');
 		let foods = await Food.findAll();
 		expect(foods.length).toBe(2);
@@ -27,7 +27,7 @@ describe('DELETE /api/v1/foods/:id path', () => {
     expect(foods[1].name).not.toBe('Banana');
   });
 
-	test('should return a 404 status if food is not in database', async(done) => {
+	test('should return a 404 status if food is not in database', async (done) => {
     const response = await request(app).delete('/api/v1/foods/100');
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toBe('Food Not Found')

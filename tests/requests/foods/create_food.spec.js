@@ -13,37 +13,38 @@ describe('POST /api/v1/foods path', () => {
     shell.exec('npx sequelize db:seed:all')
   })
 
-  test('should return a 201 status', async() => {
+  test('should return a 201 status', async () => {
     const food = { 'food': { 'name': 'Mint', 'calories': '14' } };
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(201);
   });
 
-  test('should return create food', async() => {
+  test('should return create food', async () => {
     const food = { 'food': { 'name': 'Mint', 'calories': '14' } };
     const response = await request(app).post('/api/v1/foods').send(food);
-    expect(response.body.name).toEqual('Mint');
-    expect(response.body.calories).toEqual(14);
+    expect(response.body.name).toBe('Mint');
+    expect(response.body.calories).toBe(14);
   });
 
-  test('should return a 404 status if food parameters are not include in request', async() => {
+  test('should return a 404 status if food parameters are not include in request', async () => {
     const food = 'food';
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
     expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
-  test('should return a 404 status if food calories parameter are not include in request', async() => {
+  test('should return a 404 status if food calories parameter are not include in request', async () => {
     const food = { 'food': { 'name': 'Mint' } };
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
     expect(response.body.error).toBe('Food Needs Name/Calories');
   });
 
-  test('should return a 404 status if food name parameter are not include in request', async() => {
+  test('should return a 404 status if food name parameter are not include in request', async (done) => {
     const food = { 'food': { 'calories': '14' } };
     const response = await request(app).post('/api/v1/foods').send(food);
     expect(response.status).toBe(404);
     expect(response.body.error).toBe('Food Needs Name/Calories');
+    done();
   });
 });
