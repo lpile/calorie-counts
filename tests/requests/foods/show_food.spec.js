@@ -20,14 +20,15 @@ describe('GET /api/v1/foods/:id path', () => {
 
   test('should return a single food', async () => {
     const response = await request(app).get('/api/v1/foods/1');
-    expect(response.body.id).toEqual(1);
-    expect(response.body.name).toEqual('Banana');
-    expect(response.body.calories).toEqual(150);
+    expect(response.body.id).toBe(1);
+    expect(response.body.name).toBe('Banana');
+    expect(response.body.calories).toBe(150);
   });
 
-  test('should return a 404 status if food is not in database', async () => {
+  test('should return a 404 status if food is not in database', async (done) => {
     const response = await request(app).get('/api/v1/foods/100');
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toBe('Food Not Found');
+    done();
   });
 });

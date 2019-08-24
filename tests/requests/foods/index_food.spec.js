@@ -21,18 +21,19 @@ describe('GET /api/v1/foods path', () => {
 
   test('should return an array of food objects', async () => {
     const response = await request(app).get('/api/v1/foods');
-    expect(response.body.length).toEqual(3);
+    expect(response.body.length).toBe(3);
     expect(Object.keys(response.body[0])).toContain('name');
     expect(Object.keys(response.body[0])).toContain('calories');
     expect(Object.keys(response.body[2])).toContain('name');
     expect(Object.keys(response.body[2])).toContain('calories');
   });
 
-  test('should return a 404 status if database is empty', async () => {
+  test('should return a 404 status if database is empty', async (done) => {
     Food.destroy({ where: { } }) // Empties food database
 
     const response = await request(app).get('/api/v1/foods');
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toBe('Database Is Empty');
+    done();
   });
 });
