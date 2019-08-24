@@ -83,10 +83,10 @@ router.post("/:meal_id/foods/:id", async function(req, res, next) {
   var meal = await Meal.findOne({ where: { id: req.params.meal_id }})
   var food = await Food.findOne({ where: { id: req.params.id }})
 	if (food && meal) {
-		var foodmeal = await FoodMeals.findOne({ where: {FoodId: food.id, MealId: meal.id}})
+	  var foodmeal = await FoodMeals.findOne({ where: {FoodId: food.id, MealId: meal.id}})
 	}
 	else {
-		var foodmeal = null
+	  var foodmeal = null
 	}
 
   if (meal && food && foodmeal === null) {
@@ -104,16 +104,16 @@ router.post("/:meal_id/foods/:id", async function(req, res, next) {
   	});
 	}
 	else if (foodmeal !== null) {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(406).send({ error: 'Food already belongs to this meal' })
+    	  res.setHeader('Content-Type', 'application/json');
+    	  res.status(406).send({ error: 'Food already belongs to this meal' })
 	}
 	else if (!food || !meal) {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(404).send({ error: 'Valid food and meal required' })
+    	  res.setHeader('Content-Type', 'application/json');
+    	  res.status(404).send({ error: 'Valid food and meal required' })
 	}
 	else {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(500).send({ error })
+    	  res.setHeader('Content-Type', 'application/json');
+    	  res.status(500).send({ error })
 	}
 });
 
