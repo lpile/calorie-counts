@@ -190,7 +190,7 @@ Response
 ]
 ```
 
-### GET /api/v1/meals/:mealId/foods
+### GET /api/v1/meals/:meal_id/foods
 
 **Returns a single meal and all its foods**
 
@@ -226,7 +226,7 @@ body:
 }
 ```
 
-### POST /api/v1/meals/:mealId/foods/:foodId
+### POST /api/v1/meals/:meal_id/foods/:id
 
 **Adds an existing food to an existing meal**
 
@@ -244,7 +244,7 @@ body:
 }
 ```
 
-### DELETE /api/v1/meals/:mealId/foods/:foodId
+### DELETE /api/v1/meals/:meal_id/foods/:id
 
 **Removes a food from a meal, by deleting the joins table association**
 
