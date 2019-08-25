@@ -1,7 +1,7 @@
 ## Calorie Counts
 
 ### Overview
-Calorie Counts is a paired project for Module 4 at Turing School of Software and Design, made by [Rob Stringer](https://github.com/mycobee) and [Logan Pile](https://github.com/lpile).  The project implements the Express framework with Node.js to build a RESTful API returning meal and food information.  A Postgres database with many to many schema holds meal and food information to track calorie consumption.  Also implemented is a single page front end with JQuery and ajax calls to the API.
+Calorie Counts is a 2 week paired project for Module 4 at Turing School of Software and Design, made by [Rob Stringer](https://github.com/mycobee) and [Logan Pile](https://github.com/lpile).  The project implements the Express framework with Node.js to build a RESTful API returning meal and food information.  A Postgres database with many to many schema holds meal and food information to track calorie consumption.  Also implemented is a single page front end with JQuery and ajax calls to the API.
 
 **Tech Stack**
 * Node.js
@@ -11,6 +11,10 @@ Calorie Counts is a paired project for Module 4 at Turing School of Software and
 * JQuery
 * JavaScript
 * HTML5/CSS3/SCSS
+
+### Project Boards
+#### [Week 1 Project Board](https://github.com/lpile/calorie-counts/projects/2)
+#### [Week 2 Project Board](https://github.com/lpile/calorie-counts/projects/3)
 
 ### Endpoints  
 #### [calorie-counts.herokuapp.com](https://calorie-counts.herokuapp.com)
