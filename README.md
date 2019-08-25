@@ -21,6 +21,7 @@ Calorie Counts is a 2 week paired project for Module 4 at Turing School of Softw
 
 **GET /api/v1/foods**  
 *Returns all foods*  
+
 Request:
 ```
 Content-Type: application/json
@@ -47,7 +48,8 @@ body:
 ```
 
 **GET /api/v1/foods/:id**  
-*Returns a single food*  
+*Returns a single food*
+  
 Request:
 ```
 Content-Type: application/json
@@ -65,7 +67,8 @@ body:
 ```
 
 **POST /api/v1/foods**  
-*Creates a single food*  
+*Creates a single food* 
+ 
 Request:
 ```
 POST /api/v1/foods
@@ -113,7 +116,8 @@ body:
 ```
 
 **DELETE /api/v1/foods/:id**  
-*Deletes a single food*  
+*Deletes a single food*
+  
 Request:
 ```
 Content-Type: application/json
@@ -126,6 +130,7 @@ status: 204
 
 **GET /api/v1/meals**  
 *Returns all meals*
+
 Request
 ```
 Content-Type: application/json
@@ -181,6 +186,7 @@ Response
 
 **GET /api/v1/meals/:mealId/foods**  
 *Returns a single meal and all its foods*
+
 Request:
 ```
 Content-Type: application/json
@@ -215,6 +221,7 @@ body:
 
 **POST /api/v1/meals/:mealId/foods/:foodId**
 *Adds an existing food to an existing meal*
+
 Request:
 ```
 Content-Type: application/json
@@ -231,6 +238,7 @@ body:
 
 **DELETE /api/v1/meals/:mealId/foods/:foodId**
 *Removes a food from a meal, by deleting the joins table association*
+
 Request:
 ```
 Content-Type: application/json
