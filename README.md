@@ -115,7 +115,7 @@ body:
 }
 ```
 
-**DELETE /api/v1/foods/:id**  
+**DELETE /api/v1/foods/:id**   
 *Deletes a single food*
   
 Request:
@@ -184,7 +184,7 @@ Response
 ]
 ```
 
-**GET /api/v1/meals/:mealId/foods**  
+**GET /api/v1/meals/:mealId/foods**   
 *Returns a single meal and all its foods*
 
 Request:
@@ -219,7 +219,7 @@ body:
 }
 ```
 
-**POST /api/v1/meals/:mealId/foods/:foodId**
+**POST /api/v1/meals/:mealId/foods/:foodId** 
 *Adds an existing food to an existing meal*
 
 Request:
@@ -236,7 +236,7 @@ body:
 }
 ```
 
-**DELETE /api/v1/meals/:mealId/foods/:foodId**
+**DELETE /api/v1/meals/:mealId/foods/:foodId** 
 *Removes a food from a meal, by deleting the joins table association*
 
 Request:
@@ -249,7 +249,7 @@ Response:
 status: 204
 ```
 
-### Setup
+### Setup 
 *Git Setup*
 `git clone https://github.com/lpile/calorie-counts`
 `cd calorie_counts`
