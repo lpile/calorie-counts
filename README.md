@@ -19,9 +19,9 @@ Calorie Counts is a 2 week paired project for Module 4 at Turing School of Softw
 ### Endpoints  
 #### [calorie-counts.herokuapp.com](https://calorie-counts.herokuapp.com)
 
-**GET /api/v1/foods**  
+### GET /api/v1/foods 
 
-*Returns all foods*  
+**Returns all foods**  
 
 Request:
 ```
@@ -48,9 +48,9 @@ body:
 }
 ```
 
-**GET /api/v1/foods/:id**  
+### GET /api/v1/foods/:id 
 
-*Returns a single food*
+**Returns a single food**
   
 Request:
 ```
@@ -68,9 +68,9 @@ body:
 }
 ```
 
-**POST /api/v1/foods**  
+### POST /api/v1/foods
 
-*Creates a single food* 
+**Creates a single food**
  
 Request:
 ```
@@ -96,9 +96,9 @@ body:
 }
 ```
 
-**PATCH /api/v1/foods/:id** 
+### PATCH /api/v1/foods/:id
 
-*Updates a single food*  
+**Updates a single food**
 
 Request:
 ```
@@ -119,9 +119,9 @@ body:
 }
 ```
 
-**DELETE /api/v1/foods/:id**   
+### DELETE /api/v1/foods/:id
 
-*Deletes a single food*
+**Deletes a single food**
   
 Request:
 ```
@@ -133,9 +133,9 @@ Response:
 status: 204
 ```
 
-**GET /api/v1/meals**  
+### GET /api/v1/meals 
 
-*Returns all meals*
+**Returns all meals**
 
 Request
 ```
@@ -190,9 +190,9 @@ Response
 ]
 ```
 
-**GET /api/v1/meals/:mealId/foods**   
+### GET /api/v1/meals/:mealId/foods
 
-*Returns a single meal and all its foods*
+**Returns a single meal and all its foods**
 
 Request:
 ```
@@ -226,9 +226,9 @@ body:
 }
 ```
 
-**POST /api/v1/meals/:mealId/foods/:foodId** 
+### POST /api/v1/meals/:mealId/foods/:foodId
 
-*Adds an existing food to an existing meal*
+**Adds an existing food to an existing meal**
 
 Request:
 ```
@@ -244,9 +244,9 @@ body:
 }
 ```
 
-**DELETE /api/v1/meals/:mealId/foods/:foodId** 
+### DELETE /api/v1/meals/:mealId/foods/:foodId
 
-*Removes a food from a meal, by deleting the joins table association*
+**Removes a food from a meal, by deleting the joins table association**
 
 Request:
 ```
@@ -260,12 +260,12 @@ status: 204
 
 ### Setup 
 
-*Git Setup*
+**Git Setup**
 
 `git clone https://github.com/lpile/calorie-counts`
 `cd calorie_counts`
 
-*Database & Models*  
+**Database & Models**  
 
 `$ npx sequelize db:create`  
 `$ npx sequelize db:migrate`  
@@ -276,10 +276,9 @@ status: 204
 `npm 6.9.0`  
 
 ### Packages
-`$ npm install jest`  
-`$ npm install `
+`$ npm install`
 
-*Testing*  
+**Testing**
 `$npm install babel-jest supertest shelljs -D`  
 `$npm install jest-cli`   
 `$npm test`
