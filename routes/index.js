@@ -8,7 +8,7 @@ const pool = new Pool({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Calorie-Counts' });
 });
 
 router.get('/db', async (req, res) => {
